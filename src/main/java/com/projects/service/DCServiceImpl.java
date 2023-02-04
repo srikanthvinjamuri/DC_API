@@ -6,16 +6,24 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.projects.entities.EducationDetails;
+import com.projects.entities.IncomeDetails;
 import  com.projects.entities.PlansDetails;
-import  com.projects.repo.DCRepository;
+import com.projects.repo.EducationRepository;
+import com.projects.repo.IncomeRepository;
+import  com.projects.repo.PlanRepository;
 @Service
 public class DCServiceImpl implements DCService{
 	@Autowired
-	private  DCRepository repo;
+	private  PlanRepository Planrepo;
+	@Autowired
+	private  IncomeRepository  Icmdrepo;
+	@Autowired
+	private  EducationRepository Edurepo;
 
 	@Override
 	public String savePlan(PlansDetails plan) {
-		plan =repo.save(plan);
+		plan =Planrepo.save(plan);
 		if(plan.getCaseId()!=null)
 			return "plan Saved succefully";
 		else{
@@ -25,32 +33,30 @@ public class DCServiceImpl implements DCService{
 
 	@Override	
 	public List<PlansDetails> getAllPlans() {
-
-
-		List<PlansDetails> plans=repo.findAll();
-
+		List<PlansDetails> plans=Planrepo.findAll();
 		return plans;
 	}
 	
 	@Override	
-	public List<PlansDetails> SaveKidsDetails() {
+	public String SaveEduDetails(EducationDetails ed) {
 
-
-		List<PlansDetails> plans=repo.findAll();
-
-		return plans;
+		ed =Edurepo.save(ed);
+		if(ed.getId()!=null)
+			return "Educationdetails Saved succefully";
+		else{
+			return "Educationdetails";
+		}
 	}
 	@Override	
-	public List<PlansDetails> SaveIncomedetails() {
+	public String SaveIncomedetails(IncomeDetails icd) {
 
-
-		List<PlansDetails> plans=repo.findAll();
-
-		return plans;
+		icd =Icmdrepo.save(icd);
+		if(icd.getId()!=null)
+			return "IncomeDetails Saved succefully";
+		else{
+			return "IncomeDetails Save Failed ";
+		}
 	}
-
-
-
 
 
 

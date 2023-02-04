@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.projects.entities.PlansDetails;
 
-public interface DCRepository extends JpaRepository<PlansDetails, Integer>{
+public interface PlanRepository extends JpaRepository<PlansDetails, Integer>{
 
 	
 	

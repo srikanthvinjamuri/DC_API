@@ -18,7 +18,7 @@ public class DCController {
 
 	@Autowired
 	DCService dcsrve;
-
+	
 @GetMapping("/plans")
 	private List<PlansDetails> getPlans()
 	{	
@@ -30,5 +30,7 @@ private String createCasePlan( @RequestBody PlansDetails plan)
 {	
 return dcsrve.savePlan(plan);
 }
+
+
 
 }
